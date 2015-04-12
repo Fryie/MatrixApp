@@ -17,6 +17,8 @@ class MatrixApp.Views.Matrix extends Backbone.View
 
   matrixRows: () ->
     _.map(@model.get('matrix'), (row) ->
-      row.join ' && '
+      _.map(row, (entry) ->
+        entry.toLatex().replace /\f/g, '\\f'
+      ).join ' && '
     ).join ' \\\\ '
 

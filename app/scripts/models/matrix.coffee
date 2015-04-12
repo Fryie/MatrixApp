@@ -35,18 +35,19 @@ class MatrixApp.Models.Matrix extends Backbone.Model
   multiplyRow: (row, a) ->
     newMatrix = @clone()
     newMatrix[row] = _.map @get('matrix')[row], (entry) ->
-      entry * a
+      entry.clone().mul a
     @set 'matrix', newMatrix
 
   addRowMultiple: (row1, row2, a) ->
     newMatrix = @clone()
     newMatrix[row1] = _.map @get('matrix')[row1], (entry, i) =>
-      entry + a * @get('matrix')[row2][i]
+      entry.add @get('matrix')[row2][i].clone().mul(a)
     @set 'matrix', newMatrix
 
   random: (m, n) ->
     randomEntry = ->
-      Math.floor Math.random()*500
+      number = Math.floor Math.random()*500
+      new Fraction number, 1
 
     randomRow = ->
       randomEntry() for j in [0...n]
