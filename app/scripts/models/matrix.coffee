@@ -41,7 +41,7 @@ class MatrixApp.Models.Matrix extends Backbone.Model
   addRowMultiple: (row1, row2, a) ->
     newMatrix = @clone()
     newMatrix[row1] = _.map @get('matrix')[row1], (entry, i) =>
-      entry.add @get('matrix')[row2][i].clone().mul(a)
+      entry.clone().add @get('matrix')[row2][i].clone().mul(a)
     @set 'matrix', newMatrix
 
   random: (m, n) ->
