@@ -6,10 +6,11 @@ window.MatrixApp =
   init: ->
     'use strict'
 
-    matrix = new MatrixApp.Models.Matrix.random 3, 3
-    matrixView = new MatrixApp.Views.Matrix model: matrix
-    matrixView.render()
-    $('.container').html matrixView.$el
+    matrix = new MatrixApp.Models.Matrix
+    matrix.setRandom 2, 3
+    window.matrixView = new MatrixApp.Views.Matrix model: matrix
+    window.matrixView.render()
+    $('.container').html window.matrixView.$el
     MathJax.Hub.Queue ['Typeset', MathJax.Hub]
 
 $ ->

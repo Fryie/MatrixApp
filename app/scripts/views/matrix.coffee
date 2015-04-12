@@ -13,6 +13,7 @@ class MatrixApp.Views.Matrix extends Backbone.View
 
   render: () ->
     @$el.html @template(matrixRows: @matrixRows())
+    MathJax.Hub.Queue ['Typeset', MathJax.Hub]
 
   matrixRows: () ->
     _.map(@model.get('matrix'), (row) ->
