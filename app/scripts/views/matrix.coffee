@@ -6,6 +6,8 @@ class MatrixApp.Views.Matrix extends Backbone.View
 
   tagName: 'div'
 
+  id: 'matrix'
+
   events: {}
 
   initialize: () ->

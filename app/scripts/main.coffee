@@ -6,11 +6,15 @@ window.MatrixApp =
   init: ->
     'use strict'
 
-    matrix = new MatrixApp.Models.Matrix
-    matrix.setRandom 2, 3
-    MatrixApp.matrixView = new MatrixApp.Views.Matrix model: matrix
-    $('.container').html MatrixApp.matrixView.$el
-    MatrixApp.matrixView.render()
+    MatrixApp.matrix = new MatrixApp.Models.Matrix
+    MatrixApp.matrix.setRandom 2, 3
+    matrixView = new MatrixApp.Views.Matrix model: MatrixApp.matrix
+    controlsView = new MatrixApp.Views.Controls
+
+    $('#app').append matrixView.$el
+    $('#app').append controlsView.$el
+    matrixView.render()
+    controlsView.render()
 
 $ ->
   'use strict'
